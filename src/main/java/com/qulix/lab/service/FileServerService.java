@@ -14,28 +14,26 @@ public class FileServerService {
 
 //    String rootPath = System.getProperty("user.dir");
     String rootPath;
-    List<FileEntity> listFiles = new ArrayList<>();
     public FileEntity getFiles(String path) throws Exception {
         File file;
         //configure root directory
         System.setProperty("user.dir", "C:\\Users\\KarpukAU\\untitled");
         rootPath = System.getProperty("user.dir");
-
+        //get file with this union path
         file = new File(rootPath + path);
         if (file.exists()) {
             // initialize FileEntity object
             FileEntity fileInfo = new FileEntity();
-
-
+            //transfer file data in object
             fileInfo.setName(file.getName());
             fileInfo.setLength(file.length());
             fileInfo.setPath(path);
+            //find suitable attribute
             List<FileAttribute> fileAttributes = new ArrayList<>();
             if (file.isDirectory()) {
                 fileAttributes.add(FileAttribute.DIRECTORY);
 
                 fileInfo.setInnerFiles(file.list());
-
             } else {
                 fileAttributes.add(FileAttribute.FILE);
             }

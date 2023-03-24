@@ -18,6 +18,7 @@ class FileServerServiceTest {
                     "length = 5\n" +
                     "fileAttributes = FILE, EXECUTABLE, WRITABLE, READABLE, \n" +
                     "innerFiles = none";
+
             Assertions.assertEquals(expected, actual);
         } catch (Exception e){
 

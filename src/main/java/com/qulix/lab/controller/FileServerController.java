@@ -9,14 +9,15 @@ import java.io.FileNotFoundException;
 
 @Path("/hello")
 public class FileServerController {
+    private FileServerService fileServerService = new FileServerService();
     @GET
     @Path("/message")
     @Produces("application/xml")
     public String showMessage() {
-        FileServerService fileServerService = new FileServerService();
+
         String answer = "";
         try {
-            answer = fileServerService.getFiles("/.gitignore").toString();
+            answer = fileServerService.getFiles("/.idea").toString();
         } catch (FileNotFoundException e) {
             answer = e.getMessage();
         } catch (Exception e) {
