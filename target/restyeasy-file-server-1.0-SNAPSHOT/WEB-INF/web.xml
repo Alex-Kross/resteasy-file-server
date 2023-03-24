@@ -4,7 +4,7 @@
         <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
         <init-param>
             <param-name>jakarta.ws.rs.Application</param-name>
-            <param-value>com.qulix.lab.RestEasyApplication</param-value>
+            <param-value>com.qulix.lab.util.RestEasyApplication</param-value>
         </init-param>
     </servlet>
 </web-app>
