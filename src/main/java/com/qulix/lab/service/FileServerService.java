@@ -5,10 +5,7 @@ import com.qulix.lab.entity.FileEntity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class FileServerService {
 
@@ -16,10 +13,13 @@ public class FileServerService {
     String rootPath;
     public FileEntity getFiles(String path) throws Exception {
         File file;
-        //configure root directory
-//        System.setProperty("user.dir", "C:\\Users\\KarpukAU\\untitled");
+        //get root folder from properties
         PropertiesService propertiesService = new PropertiesService();
-        rootPath = propertiesService.getRootPath();
+        // first variant
+//        rootPath = propertiesService.getRootPathWithUtilProp();
+        // second variant
+        rootPath = propertiesService.getRootPathWithRestEasyProp();
+
         //get file with this union path
         file = new File(rootPath + path);
         if (file.exists()) {

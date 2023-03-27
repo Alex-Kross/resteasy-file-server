@@ -35,6 +35,25 @@
             <artifactId>resteasy-client</artifactId>
             <version>${resteasy.version}</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.wildfly.bom</groupId>-->
+<!--            <artifactId>wildfly-microprofile</artifactId>-->
+<!--            <version>${wildfly.version}</version>-->
+<!--            <scope>import</scope>-->
+<!--            <type>pom</type>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.eclipse.microprofile.config</groupId>
+            <artifactId>microprofile-config-api</artifactId>
+            <version>3.0.1</version>
+<!--            <scope>compile</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>io.smallrye</groupId>
+            <artifactId>smallrye-config</artifactId>
+            <version>1.4.1</version>
+<!--            <scope>runtime</scope>-->
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
