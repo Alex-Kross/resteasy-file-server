@@ -12,7 +12,7 @@ class FileServerServiceTest {
     void getFile() {
         FileServerService service = new FileServerService();
         try {
-            String actual = service.getFiles("/.gitignore").toString();
+            String actual = service.getFiles("").toString();
             String expected = "name = .gitignore\n" +
                     "path = /.gitignore\n" +
                     "length = 5\n" +

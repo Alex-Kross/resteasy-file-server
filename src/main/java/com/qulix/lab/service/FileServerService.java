@@ -17,8 +17,9 @@ public class FileServerService {
     public FileEntity getFiles(String path) throws Exception {
         File file;
         //configure root directory
-        System.setProperty("user.dir", "C:\\Users\\KarpukAU\\untitled");
-        rootPath = System.getProperty("user.dir");
+//        System.setProperty("user.dir", "C:\\Users\\KarpukAU\\untitled");
+        PropertiesService propertiesService = new PropertiesService();
+        rootPath = propertiesService.getRootPath();
         //get file with this union path
         file = new File(rootPath + path);
         if (file.exists()) {
