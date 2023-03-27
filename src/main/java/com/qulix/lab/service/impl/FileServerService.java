@@ -1,27 +1,29 @@
-package com.qulix.lab.service;
+package com.qulix.lab.service.impl;
 
 import com.qulix.lab.entity.FileAttribute;
 import com.qulix.lab.entity.FileEntity;
+import com.qulix.lab.service.PropertiesService;
+import com.qulix.lab.service.ServerService;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class FileServerService {
+public class FileServerService implements ServerService {
+    private String rootPath;
 
-//    String rootPath = System.getProperty("user.dir");
-    String rootPath;
-    public FileEntity getFiles(String path) throws Exception {
-        File file;
-        //get root folder from properties
+    //get root folder from properties
+    {
         PropertiesService propertiesService = new PropertiesService();
         // first variant
 //        rootPath = propertiesService.getRootPathWithUtilProp();
         // second variant
         rootPath = propertiesService.getRootPathWithRestEasyProp();
+    }
 
+    public FileEntity getFiles(String path) throws Exception {
         //get file with this union path
-        file = new File(rootPath + path);
+        File file = new File(rootPath + path);
         if (file.exists()) {
             // initialize FileEntity object
             FileEntity fileInfo = new FileEntity();
@@ -57,4 +59,20 @@ public class FileServerService {
             throw new FileNotFoundException("File not found");
         }
     }
+
+    public boolean createFolder(String path, String name){
+        File file = new File(rootPath + path + "\\" + name);
+        if (file.exists()) {
+            throw new RuntimeException("Folder exist");
+        }
+        return file.mkdir();
+    }
+    public boolean deleteFolder(String path, String name){
+        File file = new File(rootPath + path + "\\" + name);
+        if (!file.exists()) {
+            throw new RuntimeException("Folder doesn't exist");
+        }
+        return file.delete();
+    }
+
 }

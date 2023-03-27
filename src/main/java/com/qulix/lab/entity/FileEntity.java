@@ -86,8 +86,15 @@ public class FileEntity {
 
         if (innerFiles != null) {
             String strInnerFiles = "";
+            int numberLine = 1;
             for (String innerFile: innerFiles) {
-                strInnerFiles += innerFile + ", ";
+                strInnerFiles += innerFile;
+                if (numberLine % 10 == 0) {
+                    strInnerFiles += "\n";
+                } else {
+                    strInnerFiles += ", ";
+                }
+                numberLine++;
             }
             stringJoiner.add("innerFiles = " + strInnerFiles);
         } else {

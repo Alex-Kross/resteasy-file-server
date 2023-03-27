@@ -1,16 +1,14 @@
 package com.qulix.lab.service;
 
-import com.qulix.lab.entity.FileEntity;
+import com.qulix.lab.service.impl.FileServerService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class FileServerServiceTest {
-
+    private FileServerService service = new FileServerService();
     @Test
     void getFile() {
-        FileServerService service = new FileServerService();
+        service = new FileServerService();
         try {
             String actual = service.getFiles("").toString();
             String expected = "name = Users\n" +
@@ -25,20 +23,16 @@ class FileServerServiceTest {
         }
     }
     @Test
-    void getChangingFile() {
-        FileServerService service = new FileServerService();
-        try {
+    void createFolder() {
+       boolean actual = service.createFolder("", "newCat");
+       boolean expected = true;
+       Assertions.assertEquals(expected, actual);
+    }
 
-            String actual = service.getFiles("/.gitignore").toString();
-            String expected = "name = .gitignore\n" +
-                    "path = /.gitignore\n" +
-                    "length = 5\n" +
-                    "fileAttributes = FILE, EXECUTABLE, WRITABLE, READABLE, \n" +
-                    "innerFiles = none";
-            Assertions.assertEquals(expected, actual);
-//            System.setProperty()
-        } catch (Exception e){
-
-        }
+    @Test
+    void deleteFolder() {
+        boolean actual = service.deleteFolder("", "newCat");
+        boolean expected = true;
+        Assertions.assertEquals(expected, actual);
     }
 }

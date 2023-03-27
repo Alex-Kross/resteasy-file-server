@@ -1,23 +1,20 @@
 package com.qulix.lab.controller;
 
-import com.qulix.lab.service.FileServerService;
+import com.qulix.lab.service.impl.FileServerService;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import java.io.FileNotFoundException;
 
-@Path("/hello")
+@Path("/file-system")
 public class FileServerController {
     private FileServerService fileServerService = new FileServerService();
     @GET
-    @Path("/message")
+    @Path("/files")
     @Produces("application/xml")
-    public String showMessage() {
-
+    public String getFiles(@QueryParam("path") String path) {
         String answer = "";
         try {
-            answer = fileServerService.getFiles("/.idea").toString();
+            answer = fileServerService.getFiles(path).toString();
         } catch (FileNotFoundException e) {
             answer = e.getMessage();
         } catch (Exception e) {
@@ -25,4 +22,17 @@ public class FileServerController {
         }
         return answer;
     }
+    @GET
+    @Path("/create-folder")
+    @Produces("application/xml")
+    public String createFolder(@QueryParam("path") String path, @QueryParam("name") String name){
+        return String.valueOf(fileServerService.createFolder(path, name));
+    }
+    @GET
+    @Path("/delete-folder")
+    @Produces("application/xml")
+    public String deleteFolder(@QueryParam("path") String path, @QueryParam("name") String name){
+        return String.valueOf(fileServerService.deleteFolder(path, name));
+    }
+
 }

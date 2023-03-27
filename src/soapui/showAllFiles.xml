@@ -1,0 +1,6 @@
+name = 
+path = /
+length = 16384
+fileAttributes = DIRECTORY, HIDDEN, EXECUTABLE, WRITABLE, READABLE, 
+innerFiles = $Recycle.Bin, $WinREAgent, Documents and Settings, DumpStack.log.tmp, pagefile.sys, Program Files, Program Files (x86), ProgramData, Recovery, swapfile.sys
+System Volume Information, Users, Windows, 
