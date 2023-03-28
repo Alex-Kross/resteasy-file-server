@@ -3,13 +3,13 @@ package com.qulix.lab.service.impl;
 import com.qulix.lab.entity.FileAttribute;
 import com.qulix.lab.entity.FileEntity;
 import com.qulix.lab.service.PropertiesService;
-import com.qulix.lab.service.ServerService;
+import com.qulix.lab.service.FileServer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class FileServerService implements ServerService {
+public class FileServerImpl implements FileServer {
     private String rootPath;
 
     //get root folder from properties

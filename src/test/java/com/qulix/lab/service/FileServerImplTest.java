@@ -1,14 +1,14 @@
 package com.qulix.lab.service;
 
-import com.qulix.lab.service.impl.FileServerService;
+import com.qulix.lab.service.impl.FileServerImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class FileServerServiceTest {
-    private FileServerService service = new FileServerService();
+class FileServerImplTest {
+    private FileServerImpl service = new FileServerImpl();
     @Test
     void getFile() {
-        service = new FileServerService();
+        service = new FileServerImpl();
         try {
             String actual = service.getFiles("").toString();
             String expected = "name = Users\n" +

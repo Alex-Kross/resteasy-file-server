@@ -1,13 +1,13 @@
 package com.qulix.lab.controller;
 
-import com.qulix.lab.service.impl.FileServerService;
+import com.qulix.lab.service.impl.FileServerImpl;
 
 import javax.ws.rs.*;
 import java.io.FileNotFoundException;
 
 @Path("/file-system")
 public class FileServerController {
-    private FileServerService fileServerService = new FileServerService();
+    private FileServerImpl fileServerService = new FileServerImpl();
     @GET
     @Path("/files")
     @Produces("application/xml")
