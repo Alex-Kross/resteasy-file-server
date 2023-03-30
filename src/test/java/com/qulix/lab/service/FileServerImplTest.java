@@ -4,8 +4,15 @@ import com.qulix.lab.service.impl.FileServerImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 class FileServerImplTest {
     private FileServerImpl service = new FileServerImpl();
+    PropertiesService propertiesService = new PropertiesService();
+    private String rootPath = propertiesService.getRootPathWithRestEasyProp();
     @Test
     void getFile() {
         service = new FileServerImpl();
@@ -34,5 +41,35 @@ class FileServerImplTest {
         boolean actual = service.deleteFolder("", "newCat");
         boolean expected = true;
         Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    void uploadFileWithOnlyPath() {
+        File file = new File("C:\\Users\\KarpukAU\\image.jpg");
+        File newFile = new File(rootPath + "\\" + file.getName());
+        byte[] expectedData;
+        byte[] actualData;
+        try {
+            FileInputStream expectedInputStream = new FileInputStream(file);
+            expectedData = expectedInputStream.readAllBytes();
+            service.copyDataFileInAnotherFile(file, newFile);
+            FileInputStream actualInputStream = new FileInputStream(file);
+            actualData = actualInputStream.readAllBytes();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Assertions.assertArrayEquals(expectedData, actualData);
+    }
+
+    @Test
+    void deleteFile() {
+        String path = rootPath + "\\" + ".gitignore";
+        if (new File(path).exists()) {
+            boolean actual = service.deleteFile(path);
+            boolean expected = true;
+            Assertions.assertEquals(expected, actual);
+        }
     }
 }

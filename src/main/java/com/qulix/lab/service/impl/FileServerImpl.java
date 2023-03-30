@@ -4,9 +4,12 @@ import com.qulix.lab.entity.FileAttribute;
 import com.qulix.lab.entity.FileEntity;
 import com.qulix.lab.service.PropertiesService;
 import com.qulix.lab.service.FileServer;
+import org.apache.commons.io.IOUtils;
+import org.jboss.resteasy.plugins.providers.multipart.InputPart;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import javax.ws.rs.core.MultivaluedMap;
+import java.io.*;
 import java.util.*;
 
 public class FileServerImpl implements FileServer {
@@ -74,5 +77,102 @@ public class FileServerImpl implements FileServer {
         }
         return file.delete();
     }
+    public boolean uploadFileWithOnlyPath(String path) throws IOException {
+        File file = new File(path);
+        if (!file.exists()) {
+            throw new RuntimeException("File doesn't exist");
+        }
+        File newFile = new File(rootPath + "\\" + file.getName());
 
+        copyDataFileInAnotherFile(file, newFile);
+        return true;
+
+    }
+
+    public void copyDataFileInAnotherFile(File file, File anotherFile) throws IOException {
+        InputStream inputStream = new FileInputStream(file);
+        OutputStream outputStream = new FileOutputStream(anotherFile);
+        outputStream.write(inputStream.readAllBytes());
+    }
+
+    public String uploadFile(MultipartFormDataInput input){
+        String fileName = "";
+
+        Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
+        List<InputPart> inputParts = uploadForm.get("uploadedFile");
+
+        for (InputPart inputPart : inputParts) {
+
+            try {
+
+                MultivaluedMap<String, String> header = inputPart.getHeaders();
+                fileName = getFileName(header);
+
+                //convert the uploaded file to inputstream
+                InputStream inputStream = inputPart.getBody(InputStream.class,null);
+
+                byte [] bytes = IOUtils.toByteArray(inputStream);
+
+                //constructs upload file path
+                fileName = rootPath + "\\" + fileName;
+
+                writeFile(bytes,fileName);
+
+                System.out.println("Done");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return fileName;
+    }
+
+    /**
+     * header sample
+     * {
+     * 	Content-Type=[image/png],
+     * 	Content-Disposition=[form-data; name="file"; filename="filename.extension"]
+     * }
+     **/
+    //get uploaded filename, is there a easy way in RESTEasy?
+    private String getFileName(MultivaluedMap<String, String> header) {
+
+        String[] contentDisposition = header.getFirst("Content-Disposition").split(";");
+
+        for (String filename : contentDisposition) {
+            if ((filename.trim().startsWith("filename"))) {
+
+                String[] name = filename.split("=");
+
+                String finalFileName = name[1].trim().replaceAll("\"", "");
+                return finalFileName;
+            }
+        }
+        return "unknown";
+    }
+
+    //save to somewhere
+    private void writeFile(byte[] content, String filename) throws IOException {
+
+        File file = new File(filename);
+
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
+        FileOutputStream fop = new FileOutputStream(file);
+
+        fop.write(content);
+        fop.flush();
+        fop.close();
+
+    }
+    public boolean deleteFile(String path) {
+        File file = new File(path);
+        if (!file.exists()) {
+            throw new RuntimeException("File doesn't exist");
+        }
+        return file.delete();
+    }
 }
