@@ -8,6 +8,7 @@ import org.apache.commons.io.IOUtils;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.*;
 import java.util.*;
@@ -95,11 +96,19 @@ public class FileServerImpl implements FileServer {
         outputStream.write(inputStream.readAllBytes());
     }
 
-    public String uploadFile(MultipartFormDataInput input){
+    public String uploadFile(MultipartFormDataInput input){//, @QueryParam("path") String path){
         String fileName = "";
 
         Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
-        List<InputPart> inputParts = uploadForm.get("uploadedFile");
+//        String[] split = path.split("\\\\");
+//        String s = split[split.length - 1];
+
+        Collection<List<InputPart>> values = uploadForm.values();
+        List<InputPart> inputParts = null;
+        for (List<InputPart> value : values) {
+            inputParts = value;
+        }
+//        List<InputPart> inputParts = uploadForm.get("uploadedFile");
 
         for (InputPart inputPart : inputParts) {
 

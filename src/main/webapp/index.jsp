@@ -13,7 +13,8 @@
 <body>
     <h1>JAX-RS Upload Form</h1>
 
-    <form action="rws/file-system/upload" method="post" enctype="multipart/form-data">
+    <form action="http://localhost:8080/restyeasy/rws/file-system/upload/" method="post" enctype="multipart/form-data">
+<%--    <form action="rws/file-system/upload" method="post" enctype="multipart/form-data">--%>
 
         <p>
             Select a file : <input type="file" name="uploadedFile" size="50" />
