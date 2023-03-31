@@ -59,8 +59,8 @@ public class FileServerController {
     @POST
     @Path("upload")
     @Consumes("multipart/form-data")
-    public Response uploadFile(MultipartFormDataInput input){//, @QueryParam("path") String path) {
-        String fileName = fileServerService.uploadFile(input);
+    public Response uploadFile(MultipartFormDataInput input, @QueryParam("path") String path) {
+        String fileName = fileServerService.uploadFile(input, path);
         return Response.status(200)
                 .entity("uploadFile is called, Uploaded file name : " + fileName).build();
     }

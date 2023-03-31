@@ -96,45 +96,40 @@ public class FileServerImpl implements FileServer {
         outputStream.write(inputStream.readAllBytes());
     }
 
-    public String uploadFile(MultipartFormDataInput input){//, @QueryParam("path") String path){
+    public String uploadFile(MultipartFormDataInput input, @QueryParam("path") String path){
         String fileName = "";
-
+        String fileList = "";
         Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
-//        String[] split = path.split("\\\\");
-//        String s = split[split.length - 1];
 
         Collection<List<InputPart>> values = uploadForm.values();
-        List<InputPart> inputParts = null;
-        for (List<InputPart> value : values) {
-            inputParts = value;
-        }
+
 //        List<InputPart> inputParts = uploadForm.get("uploadedFile");
+        for (List<InputPart> value : values) {
+            for (InputPart inputPart : value) {
+                try {
 
-        for (InputPart inputPart : inputParts) {
+                    MultivaluedMap<String, String> header = inputPart.getHeaders();
+                    fileName = getFileName(header);
+                    fileList += fileName + "\n";
 
-            try {
+                    //convert the uploaded file to inputstream
+                    InputStream inputStream = inputPart.getBody(InputStream.class,null);
 
-                MultivaluedMap<String, String> header = inputPart.getHeaders();
-                fileName = getFileName(header);
+                    byte [] bytes = IOUtils.toByteArray(inputStream);
 
-                //convert the uploaded file to inputstream
-                InputStream inputStream = inputPart.getBody(InputStream.class,null);
+                    //constructs upload file path
+                    fileName = rootPath + path + "\\" + fileName;
 
-                byte [] bytes = IOUtils.toByteArray(inputStream);
+                    writeFile(bytes,fileName);
 
-                //constructs upload file path
-                fileName = rootPath + "\\" + fileName;
+                    System.out.println("Done");
 
-                writeFile(bytes,fileName);
-
-                System.out.println("Done");
-
-            } catch (IOException e) {
-                e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-
         }
-        return fileName;
+        return fileList;
     }
 
     /**
@@ -183,5 +178,10 @@ public class FileServerImpl implements FileServer {
             throw new RuntimeException("File doesn't exist");
         }
         return file.delete();
+    }
+
+    public boolean downloadFile(String rootPath) {
+
+        return true;
     }
 }
