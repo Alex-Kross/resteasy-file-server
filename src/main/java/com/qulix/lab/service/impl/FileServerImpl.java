@@ -180,8 +180,8 @@ public class FileServerImpl implements FileServer {
         return file.delete();
     }
 
-    public boolean downloadFile(String rootPath) {
-
-        return true;
+    public File downloadFile(String path) {
+        File file = new File(rootPath + "\\" + path);
+        return file;
     }
 }

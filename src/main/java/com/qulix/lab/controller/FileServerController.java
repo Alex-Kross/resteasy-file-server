@@ -55,7 +55,9 @@ public class FileServerController {
             throw new RuntimeException(e);
         }
     }
+
     private final String UPLOADED_FILE_PATH = "C:\\Super\\";
+
     @POST
     @Path("upload")
     @Consumes("multipart/form-data")
@@ -72,5 +74,14 @@ public class FileServerController {
         return String.valueOf(fileServerService.deleteFile(path));
     }
 
-
+    @GET
+    @Path("download")
+    public Response downloadFile(@QueryParam("path") String path){
+        File file = fileServerService.downloadFile(path);
+        String[] split = file.getAbsolutePath().split("\\\\");
+        String fileName = split[split.length - 1];
+        Response.ResponseBuilder response = Response.ok(file);
+        response.header("Content-Disposition", "attachment; filename=" + fileName);
+        return response.build();
+    }
 }
