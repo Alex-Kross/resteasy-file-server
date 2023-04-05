@@ -1,13 +1,22 @@
 package com.qulix.lab.controller;
 
 import ch.qos.logback.classic.Logger;
+import com.qulix.lab.service.Logged;
 import com.qulix.lab.service.impl.FileServerImpl;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.Provider;
 import java.io.*;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import java.util.Properties;
+
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Path("/file-system")
 public class FileServerController {
@@ -16,10 +25,12 @@ public class FileServerController {
     private FileServerImpl fileServerService = new FileServerImpl();
 
     @GET
+    @Logged
     @Path("/files")
     @Produces("application/xml")
-    public String getFiles(@QueryParam("path") String path) {
+    public String getFiles(@QueryParam("path") String path){
         String answer = "";
+        Properties properties = System.getProperties();
         try {
             answer = fileServerService.getFiles(path).toString();
 //            logger.info("request for get all files is success");

@@ -1,0 +1,6 @@
+<!--<subsystem xmlns="urn:jboss:domain:logging:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--           xsi:schemaLocation="urn:jboss:domain:logging:1.1 ">-->
+<!--    <logger category="com.qulix.lab.controller">-->
+<!--        <level name="DEBUG"/>-->
+<!--    </logger>-->
+<!--</subsystem>-->

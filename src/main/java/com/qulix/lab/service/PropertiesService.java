@@ -23,4 +23,8 @@ public class PropertiesService {
         Config config = ConfigProvider.getConfig();
         return config.getValue("path.root", String.class);
     }
+    public String getLogPathWithRestEasyProp(){
+        Config config = ConfigProvider.getConfig();
+        return config.getValue("path.log", String.class);
+    }
 }

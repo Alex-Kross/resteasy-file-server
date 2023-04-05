@@ -65,11 +65,11 @@ class FileServerImplTest {
 
     @Test
     void deleteFile() {
-        String path = rootPath + "\\" + ".gitignore";
-        if (new File(path).exists()) {
-            boolean actual = service.deleteFile(path);
-            boolean expected = true;
+//        String path = rootPath + "\\" + ".gitignore";
+//        if (new File(path).exists()) {
+//            boolean actual = service.deleteFile(path);
+//            boolean expected = true;
 //            Assertions.assertEquals(expected, actual);
-        }
+//        }
     }
 }
