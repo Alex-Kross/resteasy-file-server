@@ -2,10 +2,14 @@ package com.qulix.lab.controller;
 
 import ch.qos.logback.classic.Logger;
 import com.qulix.lab.service.impl.FileServerImpl;
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.*;
 import java.util.Properties;
@@ -16,6 +20,14 @@ public class FileServerController {
             = (Logger) LoggerFactory.getLogger(FileServerController.class);
     private FileServerImpl fileServerService = new FileServerImpl();
 
+    @GET
+    @Path("/mpinfo")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Timed(name = "getMPMetricsInfoTimed", description = "Metrics to monitor the times spent in getMPMetricsInfo method", unit = MetricUnits.SECONDS, absolute = true)
+    @Counted(description = "counter of the getMPMetricsInfo method", absolute = true)
+    public String getMPMetricsInfo() {
+        return "MicrpProfle Metrics API 2.3";
+    }
     @GET
     @Path("/files")
     @Produces("application/xml")

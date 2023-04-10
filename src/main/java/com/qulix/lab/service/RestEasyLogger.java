@@ -1,7 +1,6 @@
 package com.qulix.lab.service;
 
 import org.jboss.resteasy.annotations.interception.ServerInterceptor;
-
 import org.jboss.resteasy.core.ResourceMethodInvoker;
 import org.jboss.resteasy.core.ServerResponse;
 import org.jboss.resteasy.spi.Failure;
@@ -15,8 +14,6 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
-import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.Provider;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
@@ -37,7 +34,6 @@ public class RestEasyLogger implements PreProcessInterceptor, MessageBodyWriterI
             WebApplicationException {
 
         logger.info("Receiving request: {} ", servletRequest.getRequestURL());
-//        MultivaluedMap<String, String> httpHeaders = request.getHttpHeaders().getRequestHeaders();
         for (String key: request.getHttpHeaders().getRequestHeaders().keySet()) {
             logger.info(key + " : " + request.getHttpHeaders().getRequestHeaders().get(key));
         }
