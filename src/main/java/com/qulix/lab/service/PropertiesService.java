@@ -3,9 +3,11 @@ package com.qulix.lab.service;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
 
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.module.Configuration;
 import java.util.Properties;
 
 public class PropertiesService {
@@ -20,6 +22,9 @@ public class PropertiesService {
 
     }
     public String getRootPathWithRestEasyProp(){
+
+
+
         Config config = ConfigProvider.getConfig();
         return config.getValue("path.root", String.class);
     }
