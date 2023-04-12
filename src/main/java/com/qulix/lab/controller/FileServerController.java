@@ -5,6 +5,7 @@ import com.qulix.lab.service.impl.FileServerImpl;
 import org.eclipse.microprofile.metrics.MetricUnits;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Timed;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.slf4j.LoggerFactory;
 
@@ -30,6 +31,7 @@ public class FileServerController {
     }
     @GET
     @Path("/files")
+    @Operation(operationId = "hello world")
     @Produces("application/xml")
     public String getFiles(@QueryParam("path") String path){
         String answer = "";

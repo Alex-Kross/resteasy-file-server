@@ -1,1 +1,40 @@
-2023-04-11 13:09:20 DEBUG Logging Provider: org.jboss.logging.Slf4jLoggerProvider
+2023-04-12 14:15:00 DEBUG Logging Provider: org.jboss.logging.Slf4jLoggerProvider
+2023-04-12 14:15:00 INFO RESTEASY002225: Deploying javax.ws.rs.core.Application: class com.qulix.lab.util.RestEasyApplication
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataWriter is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.XopWithMultipartRelatedReader is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.interceptors.encoding.AcceptEncodingGZIPInterceptor is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.FormUrlEncodedProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.ListMultipartReader is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataReader is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.interceptors.encoding.AcceptEncodingGZIPFilter is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.jaxb.XmlJAXBContextFinder is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.MultipartFormAnnotationReader is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.MultipartFormAnnotationWriter is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.MultipartReader is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.MapMultipartFormDataWriter is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.MimeMultipartProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.XopWithMultipartRelatedWriter is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.jaxb.MapProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.ListMultipartWriter is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.MultipartWriter is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.DocumentProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.SourceProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.jaxb.JAXBXmlSeeAlsoProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.JaxrsFormProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.interceptors.encoding.GZIPDecodingInterceptor is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.DataSourceProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.IIOImageProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.StringTextStar is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.SerializableProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.jaxb.JAXBXmlRootElementProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.ReaderProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.InputStreamProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.FileProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.MultipartRelatedReader is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.interceptors.encoding.GZIPEncodingInterceptor is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.DefaultTextPlain is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.MultipartRelatedWriter is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.jaxb.JAXBXmlTypeProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.multipart.MapMultipartFormDataReader is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.jaxb.CollectionProvider is already registered.  2nd registration is being ignored.
+2023-04-12 14:15:00 WARN RESTEASY002155: Provider class org.jboss.resteasy.plugins.providers.jaxb.JAXBElementProvider is already registered.  2nd registration is being ignored.

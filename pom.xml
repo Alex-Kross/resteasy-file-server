@@ -84,16 +84,16 @@
 <!--            <artifactId>smallrye-config</artifactId>-->
 <!--            <version>1.5.0</version>-->
 <!--        </dependency>-->
-        <dependency>
-            <groupId>io.smallrye.config</groupId>
-            <artifactId>smallrye-config-common</artifactId>
-            <version>3.2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>io.smallrye.config</groupId>
-            <artifactId>smallrye-config-core</artifactId>
-            <version>3.2.1</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.smallrye.config</groupId>-->
+<!--            <artifactId>smallrye-config-common</artifactId>-->
+<!--            <version>3.2.1</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.smallrye.config</groupId>-->
+<!--            <artifactId>smallrye-config-core</artifactId>-->
+<!--            <version>3.2.1</version>-->
+<!--        </dependency>-->
 
 
         <!--        for logging-->
@@ -146,29 +146,82 @@
         <!--            <artifactId>jakarta.enterprise.cdi-api</artifactId>-->
         <!--            <version>3.0.0</version>-->
         <!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.eclipse.microprofile.openapi</groupId>-->
+<!--            <artifactId>microprofile-openapi-api</artifactId>-->
+<!--            <version>2.0.1</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.geronimo</groupId>-->
+<!--            <artifactId>geronimo-openapi-impl</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.eclipse.microprofile.openapi</groupId>
             <artifactId>microprofile-openapi-api</artifactId>
-            <version>2.0.1</version>
+            <version>3.0</version>
+<!--            <scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>org.apache.geronimo</groupId>
             <artifactId>geronimo-openapi-impl</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.12</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.geronimo</groupId>-->
+<!--            <artifactId>geronimo-openapi-maven-plugin</artifactId>-->
+<!--            <version>1.0.12</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.geronimo.config</groupId>-->
+<!--            <artifactId>geronimo-config-impl</artifactId>-->
+<!--            <version>1.2.2</version>-->
+<!--        </dependency>&ndash;&gt;-->
     </dependencies>
     <build>
 
         <plugins>
             <plugin>
-                <groupId>org.apache.openejb.maven</groupId>
+                <groupId>org.apache.tomee.maven</groupId>
                 <artifactId>tomee-maven-plugin</artifactId>
-                <version>1.7.1</version>
+                <version>8.0.14</version>
                 <configuration>
-                    <tomeeVersion>1.7.1</tomeeVersion>
-                    <tomeeClassifier>plus</tomeeClassifier>
+                    <tomeeHost>localhost</tomeeHost>
+                    <user>tomee</user>
+                    <password>tomee</password>
+                    <path>${project.build.directory}/${project.build.finalName}.war</path>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.geronimo</groupId>
+                <artifactId>geronimo-openapi-maven-plugin</artifactId>
+                <version>1.0.12</version>
+                <executions>
+                    <execution>
+                        <id>generate-openapi.json</id>
+                        <goals>
+                            <goal>openapi.json</goal>
+                        </goals>
+                        <configuration>
+                            <application>com.qulix.lab.controller.FileServerController</application>
+                            <endpointClasses>
+                                <endpointClass>com.qulix.lab.controller.FileServerController</endpointClass>
+<!--                                <endpointClass>com.test.SomeOtherEndpoint</endpointClass>-->
+                            </endpointClasses>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.openejb.maven</groupId>-->
+<!--                <artifactId>tomee-maven-plugin</artifactId>-->
+<!--                <version>8.0.1</version>-->
+<!--                <configuration>-->
+<!--                    <tomeeVersion>1.7.1</tomeeVersion>-->
+<!--                    <tomeeClassifier>plus</tomeeClassifier>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 <!--            <plugin>-->
 <!--                <groupId>org.apache.tomee.maven</groupId>-->
 <!--                <artifactId>tomee-maven-plugin</artifactId>-->
