@@ -179,6 +179,30 @@
 <!--            <version>1.2.2</version>-->
 <!--        </dependency>&ndash;&gt;-->
     </dependencies>
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven3-plugin</artifactId>
+                        <version>1.10.5</version>
+                        <configuration>
+                            <!-- Container configuration -->
+                            <container>
+                                <containerId>tomcat8x</containerId>
+                            </container>
+                            <configuration>
+                                <type>existing</type>
+                                <home>C:\\Users\\KarpukAU\\apache-tomee-microprofile-8.0.14</home>
+                            </configuration>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <build>
 
         <plugins>
@@ -193,6 +217,22 @@
                     <path>${project.build.directory}/${project.build.finalName}.war</path>
                 </configuration>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.codehaus.cargo</groupId>-->
+<!--                <artifactId>cargo-maven3-plugin</artifactId>-->
+<!--                <version>1.10.5</version>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; Container configuration &ndash;&gt;-->
+<!--                    <container>-->
+<!--                        <containerId>tomcat8x</containerId>-->
+<!--                        <home>C:\Users\KarpukAU\apache-tomee-microprofile-8.0.14\bin</home>-->
+<!--                    </container>-->
+<!--                    <configuration>-->
+<!--                        <type>standalone</type>-->
+<!--                        <home>target/tomcat8x</home>-->
+<!--                    </configuration>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.geronimo</groupId>
                 <artifactId>geronimo-openapi-maven-plugin</artifactId>
